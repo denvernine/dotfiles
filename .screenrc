@@ -1,0 +1,34 @@
+# http://aperiodic.net/screen/commands:start
+defutf8 on
+defencoding utf8
+encoding utf8 utf8
+
+caption string "${= dd}" # horizontal line (windown status bar)
+cjkwidth on
+defscrollback 1024
+hardstatus alwayslastline '%{= kw}%02c:%s %{= .y}%H %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}[%l]'
+shell $SHELL
+sorendition "=" # vertical line
+startup_message off
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+vbell off
+
+# Layout
+chdir ~
+only
+select 0
+
+# Command key
+escape ^tt
+
+# Resize window
+bind e eval 'command -c resize' 'echo "Resize window"'
+bind ^e eval 'command -c resize' 'echo "Resize window"'
+bind -c resize h eval 'command -c resize' 'resize -h +1'
+bind -c resize l eval 'command -c resize' 'resize -h -1'
+bind -c resize j eval 'command -c resize' 'resize -v +1'
+bind -c resize k eval 'command -c resize' 'resize -v -1'
+bind -c resize ^h eval 'command -c resize' 'resize -h -1'
+bind -c resize ^l eval 'command -c resize' 'resize -h +1'
+bind -c resize ^j eval 'command -c resize' 'resiz 41 bind -c resize ^k eval 'command -c resize' 'resize -v -1'e -v +1'
