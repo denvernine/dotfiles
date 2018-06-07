@@ -2,7 +2,7 @@
   name = "nkiril"
   email = kiril.hack+github@gmail.com
 [core]
-  pager = less -icMR
+  pager = less -iCMR
   editor = vim
   quotepath = false
   filemode = false

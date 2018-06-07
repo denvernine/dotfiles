@@ -2,9 +2,8 @@
 set encoding=utf-8
 set nocompatible
 filetype plugin on
-set regexpengine=1 "avoid slow scroll
-"set lazyredraw "avoid slow scroll
-set ttyfast "avoid slow scroll
+set regexpengine=1
+set ttyfast
 set ambiwidth=double
 set noendofline
 set noswapfile
@@ -13,8 +12,8 @@ inoremap <silent> jj <ESC>
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
-"add :Rename command. renamimng the current file
 command! -nargs=1 -complete=file Rename f %:p:h/<args>|call delete(expand('#'))|w
+command! -nargs=0 -bang MkDir !mkdir -p %:p:h
 "*** appearance ***
 function! s:charCount()
   let l:result = strchars(getline('.'))
@@ -44,19 +43,13 @@ set colorcolumn=80
 set cursorline
 augroup highlightCharacterLengh
   au!
-"  au VimEnter,WinEnter * match NearMaxLength /\%>80v.\+/
   au VimEnter,WinEnter * match OverMaxLength /\%>120v.\+/
-augroup END
-augroup syntaxHighlightYaml
-  au!
-  au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/yaml.vim
 augroup END
 highlight ColorColumn ctermfg=darkred ctermbg=none
 highlight Comment ctermfg=240
 highlight CursorLine term=none cterm=none ctermbg=none ctermfg=none
 highlight CursorLineNr term=underline cterm=none ctermbg=none ctermfg=228
 highlight LineNr ctermbg=none ctermfg=240
-"highlight NearMaxLength ctermbg=none ctermfg=darkred
 highlight OverMaxLength ctermbg=darkred ctermfg=white
 highlight StatusLineNC cterm=none ctermbg=240 ctermfg=16
 highlight TODO cterm=underline ctermbg=none ctermfg=3
@@ -81,7 +74,6 @@ set history=20
 set hlsearch
 set ignorecase
 set incsearch
-set nowrapscan
 set smartcase
 nnoremap # #zz
 nnoremap * *zz

@@ -121,3 +121,10 @@ export LESSCHARSET=utf-8
 stty stop undef
 stty start undef
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519"
+alias ll="ls -lhsaF"
+alias fig="docker-compose"
+alias less="less -iCMR"
+alias screen="screen -U"
+eval `ssh-agent`
+ssh-add ~/.ssh/id_ed25519
