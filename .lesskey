@@ -1,0 +1,9 @@
+#command
+h left-scroll
+l right-scroll
+\eh help
+zz quit
+
+#env
+LESS = -MigSFX~RnW -x4
+LESSCHARSET = utf-8
