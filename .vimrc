@@ -7,9 +7,11 @@ filetype plugin on
 set regexpengine=1
 set ttyfast
 set ambiwidth=double
-set noendofline
+set backspace=indent,eol
+set fixendofline
 set noswapfile
 set nowrap
+set virtualedit=block
 inoremap <silent> jj <ESC>
 nnoremap ; :
 nnoremap j gj
@@ -56,15 +58,15 @@ highlight Todo         term=underline      cterm=underline ctermfg=3       cterm
 highlight Cursor       term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
 highlight CursorColumn term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
 highlight CursorLine   term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=233
-highlight VertSplit    term=NONE           cterm=NONE      ctermfg=16      ctermbg=240
+"highlight VertSplit    term=NONE           cterm=NONE      ctermfg=0       ctermbg=240
 highlight LineNr       term=NONE           cterm=NONE      ctermfg=240     ctermbg=NONE
 highlight CursorLineNr term=underline      cterm=NONE      ctermfg=228     ctermbg=NONE
 highlight Normal       term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
 highlight Pmenu        term=NONE           cterm=NONE      ctermfg=240     ctermbg=233
 highlight PmenuSel     term=NONE           cterm=NONE      ctermfg=228     ctermbg=233
 highlight Search       term=underline,bold cterm=reverse   ctermfg=NONE    ctermbg=NONE
-highlight StatusLine   term=NONE           cterm=bold      ctermfg=16      ctermbg=yellow
-highlight StatusLineNC term=NONE           cterm=NONE      ctermfg=16      ctermbg=240
+highlight StatusLine   term=NONE           cterm=bold      ctermfg=0       ctermbg=yellow
+highlight StatusLineNC term=NONE           cterm=NONE      ctermfg=0       ctermbg=240
 
 " indent
 set autoindent
@@ -76,11 +78,11 @@ set tabstop=2
 augroup fileTypeIndent
   au!
   au BufNewFile,BufRead *.json setlocal sw=4 sts=4 ts=4 filetype=javascript
-  au BufNewFile,BufRead *.php setlocal sw=4 sts=4 ts=4
-  au BufNewFile,BufRead *.yml,*.yaml setlocal sw=4 sts=4 ts=4
-  au BufNewFile,BufRead *.twig,*.twig.html setlocal filetype=html
   au BufNewFile,BufRead *.md setlocal filetype=markdown
+  au BufNewFile,BufRead *.php setlocal sw=4 sts=4 ts=4
+  au BufNewFile,BufRead *.twig setlocal filetype=html
   au BufNewFile,BufRead *.vue setlocal filetype=html
+  au BufNewFile,BufRead *.yaml,*.yml setlocal sw=4 sts=4 ts=4
 augroup END
 
 " search

@@ -2,23 +2,25 @@
 defutf8 on
 defencoding utf8
 encoding utf8 utf8
-defscrollback 1024
-shell $SHELL
-startup_message off
-vbell off
-cjkwidth on
 
+caption string "${= dd}" # horizontal line (windown status bar)
+cjkwidth on
+defscrollback 1024
+hardstatus alwayslastline '%{= kw}%02c:%s %{= .y}%H %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}[%l]'
+shell $SHELL
+sorendition "=" # vertical line
+startup_message off
 termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
-
-hardstatus alwayslastline '%{= kw}%02c:%s %{= .y}%H %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}[%l]'
-caption string "${= dd}"  # horizontal line (windown status bar)
-sorendition "=" # vertical line
+vbell off
 
 # Layout
 chdir ~
 only
 select 0
+
+# Command key
+escape ^tt
 
 # Resize window
 bind e eval 'command -c resize' 'echo "Resize window"'

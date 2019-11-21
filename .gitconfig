@@ -1,24 +1,27 @@
 [core]
-  pager = less
+  filemode = false
   editor = vim
   commentchar = ";"
-  filemode = false
-[color]
-  ui = true
-[help]
-  autocorrect = 0
+  pager = less
 [alias]
+  ls = ls-files
+  stat = status
+  stashes = stash list
   branches = branch
+  unstage = reset HEAD
   commend = commit --amend
-  find = grep --line-number --heading --break
   stage-diff = diff --cached
   stash-diff = stash show -p
-  stashes = stash list
-  stat = status
-  unstage = reset HEAD
-  slog = log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'
-  llog = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cr %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
-  glog = log --graph --date=short --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn%Cred%d %Creset%s'
-  mlog = log --merges --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+  find = grep --line-number --heading --break
+  sl = log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'
+  ll = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+  gl = log --graph --date=short --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn%Cred%d %Creset%s'
+  ml = log --merges --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
+[color]
+  ui = true
+[fetch]
+  prune = true
+[help]
+  autocorrect = 0
 [include]
   path = ~/.gitconfig.d/user
