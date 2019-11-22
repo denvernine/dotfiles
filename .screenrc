@@ -1,28 +1,29 @@
 # http://aperiodic.net/screen/commands:start
 defutf8 on
-defencoding utf8
-encoding utf8 utf8
+encoding UTF-8 UTF-8
 
-caption string "${= dd}" # horizontal line (windown status bar)
-cjkwidth on
-defscrollback 1024
-hardstatus alwayslastline '%{= kw}%02c:%s %{= .y}%H %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}[%l]'
-shell $SHELL
-sorendition "=" # vertical line
 startup_message off
-termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
-termcapinfo xterm-256color 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 vbell off
+shell $SHELL
+term $TERM
+defscrollback 1024
+cjkwidth on
+termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l' # avoid window resize
 
-# Layout
-chdir ~
-only
-select 0
+rendition so '=u'
+rendition bell '=' 'yk'
+caption splitonly '%3n %t' # horizontal line (windown status bar)
+hardstatus alwayslastline '%{= .y}%S: %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}'
 
 # Command key
 escape ^tt
 
 # Resize window
+bind 1 only
+bind 2 eval "sprit -v" focus screen
+bind - split
+bind | split -v
+bind ^o focus
 bind e eval 'command -c resize' 'echo "Resize window"'
 bind ^e eval 'command -c resize' 'echo "Resize window"'
 bind -c resize h eval 'command -c resize' 'resize -h +1'

@@ -89,7 +89,6 @@ augroup END
 set history=20
 set hlsearch
 set ignorecase
-set incsearch
 set smartcase
 nnoremap # #zz
 nnoremap * *zz
