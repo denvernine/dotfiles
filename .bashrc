@@ -14,34 +14,33 @@ stty start undef
 
 HISTIGNORE='rm *:sudo rm *'
 
-alias ll="ls -lhsaF"
-alias fig="docker-compose"
-alias screen="screen -U"
-alias vim="vim -o"
+alias ll='ls -lhsaF'
+alias fig='docker-compose'
+alias vim='vim -o'
+alias mysql='mysql --pager=less'
 
-COLOR_PROMPT=1
-AUTO_ATTACH_SCREEN=0
-USE_SSH_AGENT=0
+color_prompt=1
+auto_attach_screen=0
+use_ssh_agent=0
 
-if [ "$COLOR_PROMPT" -eq 1 ]; then
-  function gitBranch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/';
-  }
 
-  TERM=xterm-256color
-  PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[38;5;39m\]$(pwd)\[\e[m\]$(gitBranch) \[\e[38;5;39m\]\$\[\e[m\] '
+function gitBranch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1:/';
+}
+
+if [ "$color_prompt" -eq 1 ]; then
+  PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(gitBranch)\[\e[1;34m\]\$\[\e[m\] '
 else
-  TERM=xterm
-  PS1="[\u@\h \W]\$ ";
+  PS1='[\u@\h \W$(gitBranch)]\$ '
 fi;
-unset COLOR_PROMPT
+unset color_prompt
 
-if [ "$AUTO_ATTACH_SCREEN" -eq 1 ]; then
+if [ "$auto_attach_screen" -eq 1 ]; then
   [[ -z $STY ]] && screen -RD $USER;
 fi;
-unset AUTO_ATTACH_SCREEN
+unset auto_attach_screen
 
-if [ "$USE_SSH_AGENT" -eq 1 ]; then
+if [ "$use_ssh_agent" -eq 1 ]; then
   SSH_KEY_TTL_SECOND=32400 # 9hours
   SSH_KEY=$HOME/.ssh/id_ed25519
   SSH_AGENT_FILE=$HOME/.ssh-agent_info
@@ -57,4 +56,4 @@ if [ "$USE_SSH_AGENT" -eq 1 ]; then
   unset SSH_AGENT_FILE
   unset SSH_KEY_TTL_SECOND
 fi;
-unset USE_SSH_AGENT
+unset use_ssh_agent

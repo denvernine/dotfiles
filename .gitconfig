@@ -22,5 +22,7 @@
   prune = true
 [help]
   autocorrect = 0
+[push]
+  default = simple
 [include]
   path = ~/.gitconfig.d/user

@@ -8,6 +8,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   for DOTFILE in .??*
   do
     [ ${DOTFILE} = ".git" ] && continue
+    [ ${DOTFILE} = ".ssh" ] && continue
 
     ln -snfv ${SOURCE_DIR}/${DOTFILE} ${HOME}/${DOTFILE}
   done
