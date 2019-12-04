@@ -20,7 +20,7 @@ escape ^tt
 
 # Resize window
 bind 1 only
-bind 2 eval "sprit -v" focus screen
+bind 2 split -v
 bind - split
 bind | split -v
 bind ^o focus
@@ -32,4 +32,5 @@ bind -c resize j eval 'command -c resize' 'resize -v +1'
 bind -c resize k eval 'command -c resize' 'resize -v -1'
 bind -c resize ^h eval 'command -c resize' 'resize -h -1'
 bind -c resize ^l eval 'command -c resize' 'resize -h +1'
-bind -c resize ^j eval 'command -c resize' 'resiz 41 bind -c resize ^k eval 'command -c resize' 'resize -v -1'e -v +1'
+bind -c resize ^j eval 'command -c resize' 'resize -v -1'
+bind -c resize ^k eval 'command -c resize' 'resize -v +1'

@@ -29,6 +29,7 @@ function gitBranch() {
 }
 
 if [ "$color_prompt" -eq 1 ]; then
+  TERM=xterm-256color
   PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(gitBranch)\[\e[1;34m\]\$\[\e[m\] '
 else
   PS1='[\u@\h \W$(gitBranch)]\$ '
@@ -44,7 +45,9 @@ if [ "$use_ssh_agent" -eq 1 ]; then
   SSH_KEY_TTL_SECOND=32400 # 9hours
   SSH_KEY=$HOME/.ssh/id_ed25519
   SSH_AGENT_FILE=$HOME/.ssh-agent_info
+
   test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE > /dev/null 2>&1
+
   if ssh-add -l > /dev/null 2>&1 && [ $? -eq 0 ]; then
       echo "ssh-agent still runnig. pid: $SSH_AGENT_PID"
   else
@@ -53,6 +56,7 @@ if [ "$use_ssh_agent" -eq 1 ]; then
       source $SSH_AGENT_FILE > /dev/null 2>&1
       ssh-add $SSH_KEY
   fi
+
   unset SSH_AGENT_FILE
   unset SSH_KEY_TTL_SECOND
 fi;

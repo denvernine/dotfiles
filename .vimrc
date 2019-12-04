@@ -56,8 +56,8 @@ highlight Comment      term=NONE           cterm=NONE      ctermfg=240     cterm
 highlight Todo         term=underline      cterm=underline ctermfg=3       ctermbg=NONE
 "highlight ColorColumn  term=bold           cterm=NONE      ctermfg=darkred ctermbg=NONE
 highlight Cursor       term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
-highlight CursorColumn term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
-highlight CursorLine   term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=233
+"highlight CursorColumn term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
+highlight CursorLine   term=NONE           cterm=NONE      ctermfg=NONE    ctermbg=NONE
 "highlight VertSplit    term=NONE           cterm=NONE      ctermfg=0       ctermbg=240
 highlight LineNr       term=NONE           cterm=NONE      ctermfg=240     ctermbg=NONE
 highlight CursorLineNr term=underline      cterm=NONE      ctermfg=228     ctermbg=NONE
@@ -65,7 +65,7 @@ highlight Normal       term=NONE           cterm=NONE      ctermfg=NONE    cterm
 highlight Pmenu        term=NONE           cterm=NONE      ctermfg=240     ctermbg=233
 highlight PmenuSel     term=NONE           cterm=NONE      ctermfg=228     ctermbg=233
 highlight Search       term=underline,bold cterm=reverse   ctermfg=NONE    ctermbg=NONE
-highlight StatusLine   term=NONE           cterm=bold      ctermfg=0       ctermbg=yellow
+highlight StatusLine   term=NONE           cterm=NONE      ctermfg=0       ctermbg=yellow
 highlight StatusLineNC term=NONE           cterm=NONE      ctermfg=0       ctermbg=240
 
 " indent
@@ -102,16 +102,16 @@ nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 
 " plugin
 "
-" setting for 'junegunn/vim-plug'
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-" hit `:source %` and `:PlugInstall` command
-call plug#begin('~/.vim/plugged')
-  " which provides support for expanding abbreviations similar to emmet.
-  " e.g.) type `ul>li*2+li>(span>a)+button.small+div#bottom` and `<C-y> + ,`
-  Plug 'mattn/emmet-vim'
-  " A simple, easy-to-use Vim alignment plugin.
-  Plug 'junegunn/vim-easy-align'
-call plug#end()
-let g:indentLine_color_term = 239
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+" " setting for 'junegunn/vim-plug'
+" " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" " hit `:source %` and `:PlugInstall` command
+" call plug#begin('~/.vim/plugged')
+"   " which provides support for expanding abbreviations similar to emmet.
+"   " e.g.) type `ul>li*2+li>(span>a)+button.small+div#bottom` and `<C-y> + ,`
+"   Plug 'mattn/emmet-vim'
+"   " A simple, easy-to-use Vim alignment plugin.
+"   Plug 'junegunn/vim-easy-align'
+" call plug#end()
+" let g:indentLine_color_term = 239
+" xmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)
