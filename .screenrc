@@ -8,12 +8,28 @@ shell $SHELL
 term $TERM
 defscrollback 1024
 cjkwidth on
+altscreen on
 termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l' # avoid window resize
 
 rendition so '=u'
 rendition bell '=' 'yk'
-caption splitonly '%3n %t' # horizontal line (windown status bar)
-hardstatus alwayslastline '%{= .y}%S: %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-16=%{= .y}'
+setenv HARDSTATUS ''
+setenv HARDSTATUS "$HARDSTATUS%{= .y}" # colorize foreground:inherit background:yellow
+setenv HARDSTATUS "$HARDSTATUS%S: "    # session name
+setenv HARDSTATUS "$HARDSTATUS%L="     # mark truncate position
+setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "$HARDSTATUS%-w"     # all window numbers and names. (up to the current window)
+setenv HARDSTATUS "$HARDSTATUS%46>"    # marked position for truncation (%N>: N=percentage of the output area)
+setenv HARDSTATUS "$HARDSTATUS%{= .g}" # colorize foreground:inherit background:green
+setenv HARDSTATUS "$HARDSTATUS%n %t*"  # window number and window title
+setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "$HARDSTATUS%+w"     # all window numbers and names. (after the current one)
+setenv HARDSTATUS "$HARDSTATUS%{= .g}" # colorize foreground:inherit background:green
+setenv HARDSTATUS "$HARDSTATUS%-20="   # padding right
+setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "$HARDSTATUS %Y/%m/%d %c:%s" # 24H format datetime
+hardstatus alwayslastline "$HARDSTATUS"
+unsetenv HARDSTATUS
 
 # Command key
 escape ^tt

@@ -25,12 +25,12 @@ use_ssh_agent=0
 
 
 function gitBranch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1:/';
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/';
 }
 
 if [ "$color_prompt" -eq 1 ]; then
   TERM=xterm-256color
-  PS1='\[\e[1;32m\]\u@\h\[\e[m\] \[\e[1;34m\]\w\[\e[m\]$(gitBranch)\[\e[1;34m\]\$\[\e[m\] '
+  PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\]$(gitBranch):\[\e[34m\]\$\[\e[m\] '
 else
   PS1='[\u@\h \W$(gitBranch)]\$ '
 fi;
