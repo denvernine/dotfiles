@@ -14,3 +14,4 @@ export TERM=xterm
 export GIT_SSH_COMMAND="ssh -i ~/.ssh/id_ed25519"
 
 [[ -e ~/.lesskey ]] && lesskey;
+[[ -e ~/.dircolors ]] && eval `dircolors ~/.dircolors`
