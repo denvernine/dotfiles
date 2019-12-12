@@ -30,7 +30,7 @@ function gitBranch() {
 
 if [ "$color_prompt" -eq 1 ]; then
   TERM=xterm-256color
-  PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\]$(gitBranch):\[\e[34m\]\$\[\e[m\] '
+  PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\]$(gitBranch) \[\e[34m\]\$\[\e[m\] '
 else
   PS1='[\u@\h \W$(gitBranch)]\$ '
 fi;

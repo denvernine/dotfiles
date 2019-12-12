@@ -50,15 +50,14 @@ set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ l\.%l
 "" ref: https://vimhelp.org/syntax.txt.html
 syntax on
 set background=dark
-"set colorcolumn=81
 set cursorline
-"colorscheme base16-railscasts
+colorscheme base16-railscasts
 highlight clear        SignColumn
 highlight ColorColumn  ctermbg=237
 highlight CursorLine   ctermbg=236
 highlight VertSplit    ctermbg=236
 highlight IncSearch    ctermbg=3   ctermfg=1
-highlight LineNr       ctermbg=236 ctermfg=240
+highlight LineNr       ctermbg=0   ctermfg=240
 highlight CursorLineNr ctermbg=236 ctermfg=240
 highlight Pmenu        ctermbg=240 ctermfg=12
 highlight PmenuSel     ctermbg=3   ctermfg=1
