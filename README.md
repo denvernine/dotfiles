@@ -1,6 +1,14 @@
 # dotfiles
 
-```shell
+## how to use
+
+```shell:bash
+$ bash -c "$(curl -L raw.github.com/denvernine/dotfiles/master/install.sh)"
+```
+
+## environment
+
+```shell:bash
 $ cat /etc/system-release /etc/os-release
 CentOS Linux release 7.7.1908 (Core)
 NAME="CentOS Linux"
