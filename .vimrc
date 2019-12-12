@@ -99,20 +99,17 @@ vnoremap z/ <ESC>/\%V
 vnoremap z? <ESC>?\%V
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 
-"" plugin
-""
-"" setting for 'junegunn/vim-plug'
-"" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"" hit `:source %` and `:PlugInstall` command
-"call plug#begin('~/.vim/plugged')
-"  " which provides support for expanding abbreviations similar to emmet.
-"  " e.g.) type `ul>li*2+li>(span>a)+button.small+div#bottom` and `<C-y> + ,`
-"  Plug 'mattn/emmet-vim'
-"  " A simple, easy-to-use Vim alignment plugin.
-"  Plug 'junegunn/vim-easy-align'
-"  " colorscheme
-"  Plug 'chrishunt/color-schemes'
-"call plug#end()
-"let g:indentLine_color_term = 239
-"xmap ga <Plug>(EasyAlign)
-"nmap ga <Plug>(EasyAlign)
+" plugin
+"
+" setting for 'junegunn/vim-plug'
+" hit `:source %` and `:PlugInstall` command
+call plug#begin('~/.vim/plugged')
+  " which provides support for expanding abbreviations similar to emmet.
+  " e.g.) type `ul>li*2+li>(span>a)+button.small+div#bottom` and `<C-y> + ,`
+  Plug 'mattn/emmet-vim'
+  " A simple, easy-to-use Vim alignment plugin.
+  Plug 'junegunn/vim-easy-align'
+call plug#end()
+let g:indentLine_color_term = 239
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
