@@ -4,7 +4,7 @@ encoding UTF-8 UTF-8
 
 startup_message off
 vbell off
-shell $SHELL
+shell -$SHELL
 term $TERM
 defscrollback 1024
 cjkwidth on
