@@ -14,13 +14,13 @@ stty start undef
 
 HISTIGNORE='rm *:sudo rm *'
 
-alias ll='ls -lhsaF -v'
+alias ll='ls -lhsaFv'
 alias fig='docker-compose'
 alias vim='vim -o'
 alias mysql='mysql --pager=less'
 
 COLOR_PROMPT=on
-AUTO_ATTACH_SCREEN=off
+AUTO_ATTACH_SCREEN=on
 USE_SSH_AGENT=off
 
 
@@ -46,14 +46,14 @@ if [ ${USE_SSH_AGENT} = 'on' ]; then
   SSH_AGENT_KEY_TTL_SECOND=32400 # 9hours
   SSH_AGENT_FILE=${HOME}/.ssh-agent_info
 
-  test -f ${SSH_AGENT_FILE} && source ${SSH_AGENT_FILE} > /dev/null 2>&1
+  test -f ${SSH_AGENT_FILE} && source ${SSH_AGENT_FILE} &> /dev/null
 
-  if ssh-add -l > /dev/null 2>&1 && [ $? -eq 0 ]; then
+  if ssh-add -l &> /dev/null && [ $? -eq 0 ]; then
       echo "ssh-agent still runnig. pid: ${SSH_AGENT_PID}"
   else
       echo 'ssh-agent not running.'
       ssh-agent -t ${SSH_AGENT_KEY_TTL_SECOND} > ${SSH_AGENT_FILE}
-      source ${SSH_AGENT_FILE} > /dev/null 2>&1
+      source ${SSH_AGENT_FILE} &> /dev/null
       ssh-add ${SSH_AGENT_KEY}
   fi
 
