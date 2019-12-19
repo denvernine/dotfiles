@@ -2,4 +2,4 @@
 
 eval `ssh-agent -k`
 ssh-add -D
-unset SSH_KEY
+unset SSH_AGENT_KEY
