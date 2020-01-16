@@ -4,20 +4,21 @@
 
 echo 'deplying...'
 
-cd "${dotfiles_directory:-$HOME/dotfiles}"
-if [ $? -ne 0 ]; then
+cd "${dotfiles_directory:=${HOME}/dotfiles}"
+if [ "${?}" -ne 0 ]; then
   exit 1
 fi
 
 for dotfile in .??*
-do
-  [ "$dotfile" = '.git' ] && continue
+  do
+    [ "${dotfile}" = '.git' ] && continue
+    [ "${dotfile}" = '.ssh' ] && continue
 
-  ln -snfv "${dotfiles_directory:-$HOME/dotfiles}/$dotfile" "$HOME/$dotfile"
+    ln -snfv "${dotfiles_directory}/${dotfile}" "${HOME}/${dotfile}"
 done
 
-curl -fLo "$HOME/.vim/colors/base16-railscasts.vim" --create-dirs https://raw.githubusercontent.com/chrishunt/color-schemes/master/railscasts/base16-railscasts.vim
-curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo "${HOME}/.vim/colors/base16-railscasts.vim" --create-dirs https://raw.githubusercontent.com/chrishunt/color-schemes/master/railscasts/base16-railscasts.vim
+curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo 'done.'
 

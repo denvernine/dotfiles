@@ -7,7 +7,7 @@
   stat = status
   stashes = stash list
   branches = branch
-  unstage = reset HEAD
+  unstage = restore --staged
   commend = commit --amend
   stage-diff = diff --cached
   stash-diff = stash show -p

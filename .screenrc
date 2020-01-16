@@ -4,8 +4,8 @@ encoding UTF-8 UTF-8
 
 startup_message off
 vbell off
-shell -$SHELL
-term $TERM
+shell "${SHELL}"
+term "${TERM}"
 defscrollback 1024
 cjkwidth on
 altscreen on
@@ -14,29 +14,27 @@ termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l' # avoid window resize
 rendition so '=u'
 rendition bell '=' 'yk'
 setenv HARDSTATUS ''
-setenv HARDSTATUS "$HARDSTATUS%{= .y}" # colorize foreground:inherit background:yellow
-setenv HARDSTATUS "$HARDSTATUS%S: "    # session name
-setenv HARDSTATUS "$HARDSTATUS%L="     # mark truncate position
-setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
-setenv HARDSTATUS "$HARDSTATUS%-w"     # all window numbers and names. (up to the current window)
-setenv HARDSTATUS "$HARDSTATUS%46>"    # marked position for truncation (%N>: N=percentage of the output area)
-setenv HARDSTATUS "$HARDSTATUS%{= .g}" # colorize foreground:inherit background:green
-setenv HARDSTATUS "$HARDSTATUS%n %t*"  # window number and window title
-setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
-setenv HARDSTATUS "$HARDSTATUS%+w"     # all window numbers and names. (after the current one)
-setenv HARDSTATUS "$HARDSTATUS%{= .g}" # colorize foreground:inherit background:green
-setenv HARDSTATUS "$HARDSTATUS%-20="   # padding right
-setenv HARDSTATUS "$HARDSTATUS%{= .d}" # colorize foreground:inherit background:default
-setenv HARDSTATUS "$HARDSTATUS %Y/%m/%d %c:%s" # 24H format datetime
-hardstatus alwayslastline "$HARDSTATUS"
+setenv HARDSTATUS "${HARDSTATUS}%{= .y}" # colorize foreground:inherit background:yellow
+setenv HARDSTATUS "${HARDSTATUS}%S: "    # session name
+setenv HARDSTATUS "${HARDSTATUS}%L="     # mark truncate position
+setenv HARDSTATUS "${HARDSTATUS}%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "${HARDSTATUS}%-w"     # all window numbers and names. (up to the current window)
+setenv HARDSTATUS "${HARDSTATUS}%46>"    # marked position for truncation (%N>: N=percentage of the output area)
+setenv HARDSTATUS "${HARDSTATUS}%{= .g}" # colorize foreground:inherit background:green
+setenv HARDSTATUS "${HARDSTATUS}%n %t*"  # window number and window title
+setenv HARDSTATUS "${HARDSTATUS}%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "${HARDSTATUS}%+w"     # all window numbers and names. (after the current one)
+setenv HARDSTATUS "${HARDSTATUS}%{= .g}" # colorize foreground:inherit background:green
+setenv HARDSTATUS "${HARDSTATUS}%-20="   # padding right
+setenv HARDSTATUS "${HARDSTATUS}%{= .d}" # colorize foreground:inherit background:default
+setenv HARDSTATUS "${HARDSTATUS} %Y/%m/%d %c:%s" # 24H format datetime
+hardstatus alwayslastline "${HARDSTATUS}"
 unsetenv HARDSTATUS
 
 # Command key
 escape ^tt
 
 # Resize window
-bind 1 only
-bind 2 split -v
 bind - split
 bind | split -v
 bind ^o focus
