@@ -20,7 +20,7 @@ command! -nargs=1 -complete=file Rename f %:p:h/<args>|call delete(expand('#'))|
 command! -nargs=0 -bang MkDir !mkdir -p %:p:h
 augroup setShebang
   au!
-  au BufNewFile *.php 0put =\"<?php declare(strict_types=1);\n\n\"|$
+  au BufNewFile *.php 0put =\"<?php\n\ndeclare(strict_types=1);\n\n\"|$
 augroup END
 
 " appearance
@@ -44,7 +44,7 @@ set scrolloff=5
 set showmatch
 set splitbelow
 set splitright
-set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ l\.%l,\ %1c\ /\ l\.%L,\ %1{b:charLength}%8P
+set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ /\ Ln\.%L,\ Col\.%1{b:charLength}%8P
 
 "" colorscheme
 "" ref: https://vimhelp.org/syntax.txt.html
