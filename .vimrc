@@ -24,27 +24,29 @@ augroup setShebang
 augroup END
 
 " appearance
-function! s:charCount()
-  let l:result = strchars(getline('.'))
-  return l:result
-endfunction
-function! s:update()
-  let b:charLength = s:charCount()
-endfunction
-augroup charCount
+augroup calcColumnLength
   au!
+
+  function! s:charCount()
+    let l:result = strchars(getline('.'))
+    return l:result
+  endfunction
+
+  function! s:update()
+    let b:charLength = s:charCount()
+  endfunction
+
   au BufNewFile,BufRead,CursorMoved,CursorMovedI * call <SID>update()
 augroup END
 set laststatus=2
 set list
 set listchars=tab:>_,trail:_,extends:>,precedes:<,nbsp:_
 set matchtime=1
-set number
 set scrolloff=5
 set showmatch
 set splitbelow
 set splitright
-set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ /\ Ln\.%L,\ Col\.%1{b:charLength}%8P
+set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ %4P
 
 "" colorscheme
 "" ref: https://vimhelp.org/syntax.txt.html
