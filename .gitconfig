@@ -4,7 +4,7 @@
   pager = less
 [alias]
   ls = ls-files
-  stat = status
+  stat = status -u --
   stashes = stash list
   branches = branch
   unstage = restore --staged
@@ -25,5 +25,9 @@
   autocorrect = 0
 [push]
   default = simple
+[merge]
+  tool = vimdiff
+[mergetool]
+  keepBackup = false
 [include]
   path = ~/.gitconfig.d/user
