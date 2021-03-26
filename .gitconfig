@@ -1,6 +1,6 @@
 [core]
   editor = vim
-  commentchar = ";"
+  commentChar = ";"
   pager = less
 [alias]
   ls = ls-files
@@ -19,15 +19,19 @@
   force-push = push --force-with-lease
 [color]
   ui = true
+[diff]
+  tool = vimdiff
 [fetch]
   prune = true
 [help]
-  autocorrect = 0
-[push]
-  default = simple
+  autoCorrect = 0
 [merge]
   tool = vimdiff
+  conflictStyle = diff3
 [mergetool]
+  prompt = false
   keepBackup = false
+[push]
+  default = simple
 [include]
   path = ~/.gitconfig.d/user
