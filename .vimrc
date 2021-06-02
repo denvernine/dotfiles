@@ -20,7 +20,7 @@ command! -nargs=1 -complete=file Rename f %:p:h/<args>|call delete(expand('#'))|
 command! -nargs=0 -bang MkDir !mkdir -p %:p:h
 augroup setShebang
   au!
-  au BufNewFile *.php 0put =\"<?php\n\ndeclare(strict_types=1);\n\n\"|$
+  au BufNewFile *.php 0put =\"<?php declare(strict_types=1);\n\n\"|$
 augroup END
 
 " appearance
@@ -46,7 +46,7 @@ set scrolloff=5
 set showmatch
 set splitbelow
 set splitright
-set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ %4P
+set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ /\ Ln\.%L,\ Col\.%1{b:charLength}%6P
 
 "" colorscheme
 "" ref: https://vimhelp.org/syntax.txt.html
@@ -78,11 +78,9 @@ set softtabstop=2
 set tabstop=2
 augroup fileTypeIndent
   au!
-  au BufNewFile,BufRead *.json setlocal sw=4 sts=4 ts=4 filetype=javascript
   au BufNewFile,BufRead *.md setlocal filetype=markdown
   au BufNewFile,BufRead *.php setlocal sw=4 sts=4 ts=4
-  au BufNewFile,BufRead *.twig setlocal filetype=html
-  au BufNewFile,BufRead *.vue setlocal filetype=html
+  au BufNewFile,BufRead *.twig,*.vue,*.svelte setlocal filetype=html
   au BufNewFile,BufRead *.yaml,*.yml setlocal sw=4 sts=4 ts=4
 augroup END
 
