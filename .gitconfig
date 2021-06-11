@@ -11,7 +11,10 @@
   commend = commit --amend
   stage-diff = diff --cached
   stash-diff = stash show -p
-  diff-files = diff --name-only master...$CURRENT_BRANCH
+  files = "!f() { \
+    local current_branch=$(git branch --show-current 2>&1); \
+    git diff --name-only master...${current_branch}; \
+  }; f"
   find = grep --line-number --heading --break
   slog = log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'
   llog = log --stat --decorate=short --pretty=format:'%C(yellow)%h %Cgreen%ci %Cblue%cn%Cred%d %Creset%s %C(cyan)%b'
