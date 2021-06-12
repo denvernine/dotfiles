@@ -20,29 +20,32 @@ alias vim='vim -o'
 alias mysql='mysql --pager=less'
 alias rand='cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1'
 
-readonly COLOR_PROMPT=on  # on/off
-readonly AUTO_ATTACH_SCREEN=on  # on/off
-readonly USE_SSH_AGENT=off  # on/off
+COLOR_PROMPT=on  # on/off
+AUTO_ATTACH_SCREEN=on  # on/off
+USE_SSH_AGENT=off  # on/off
+
+function gitBranch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/';
+}
 
 if [ "${COLOR_PROMPT}" = on ]; then
-  function gitBranch() {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/:\1/';
-  }
-
   TERM=xterm-256color
   PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\]$(gitBranch) \[\e[34m\]\$\[\e[m\] '
 else
+  TERM=xterm
   PS1='[\u@\h \W$(gitBranch)]\$ '
 fi;
+unset COLOR_PROMPT
 
 if [ "${AUTO_ATTACH_SCREEN}" = on ]; then
   [[ -z "${STY}" ]] && screen -RD "${USER}";
 fi;
+unset AUTO_ATTACH_SCREEN
 
 if [ "${USE_SSH_AGENT}" = on ]; then
   readonly SSH_AGENT_KEY="${HOME}/.ssh/id_ed25519"
-  readonly SSH_AGENT_KEY_TTL_SECOND=32400 # 9hours
-  readonly SSH_AGENT_FILE="${HOME}/.ssh-agent_info"
+  SSH_AGENT_KEY_TTL_SECOND=32400 # 9hours
+  SSH_AGENT_FILE="${HOME}/.ssh-agent_info"
 
   test -f "${SSH_AGENT_FILE}" && source "${SSH_AGENT_FILE}" &> /dev/null
 
@@ -54,4 +57,8 @@ if [ "${USE_SSH_AGENT}" = on ]; then
       source "${SSH_AGENT_FILE}" &> /dev/null
       ssh-add "${SSH_AGENT_KEY}"
   fi
+
+  unset SSH_AGENT_FILE
+  unset SSH_AGENT_KEY_TTL_SECOND
 fi;
+unset USE_SSH_AGENT
