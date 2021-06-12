@@ -10,17 +10,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   if type curl &> /dev/null || type wget &> /dev/null; then
     dotfiles_directory="${REPLY:=${HOME}/denvernine/dotfiles}"
     tarball_url='https://github.com/denvernine/dotfiles/archive/master.tar.gz'
-    
+
     if type curl &> /dev/null; then
       curl -L "${tarball_url}"
     elif type wget &> /dev/null; then
       wget -O - "${tarball_url}"
     fi | tar zxv
-   
+
     unset tarball_url
-    
     mv -f dotfiles-master "${dotfiles_directory}"
-   
+
     . "${dotfiles_directory}/deploy.sh"
   else
     echo 'curl or wget required.'
