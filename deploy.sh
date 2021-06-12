@@ -4,7 +4,7 @@
 
 echo 'deplying...'
 
-cd "${dotfiles_directory:=${HOME}/dotfiles}"
+cd "${dotfiles_directory:=${HOME}/denvernine/dotfiles}"
 if [ "${?}" -ne 0 ]; then
   exit 1
 fi
@@ -22,4 +22,5 @@ curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs https://raw.githubuserc
 
 echo 'done.'
 
+unset dotfiles_directory
 unset dotfile
