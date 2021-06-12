@@ -68,6 +68,8 @@ highlight SpellBad     ctermbg=0   ctermfg=1
 highlight StatusLine   ctermbg=240 ctermfg=12
 highlight StatusLineNC ctermbg=238 ctermfg=0
 highlight Visual       ctermbg=3   ctermfg=0
+highlight over120      ctermbg=1   ctermfg=0
+call matchadd('over120', '.\%>121v')
 
 " indent
 set autoindent
