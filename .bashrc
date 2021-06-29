@@ -18,7 +18,10 @@ alias ll='ls -lhsaFv'
 alias fig='docker-compose'
 alias vim='vim -o'
 alias mysql='mysql --pager=less'
-alias rand='cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1'
+
+function rand() {
+  cat /dev/random | tr -dc 'a-zA-Z0-9' | fold -w $(echo -n ${1:-16}) | head -n 1;                                                                                                                                               
+}
 
 COLOR_PROMPT=on  # on/off
 AUTO_ATTACH_SCREEN=on  # on/off
