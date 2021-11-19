@@ -119,6 +119,7 @@ fi
 
 # don't put `rm` command in the history.
 HISTIGNORE='rm *:sudo rm *'
+export HISTIGNORE
 
 # use ssh agent.
 use_ssh_agent=no  # yes/no

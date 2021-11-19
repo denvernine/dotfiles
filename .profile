@@ -28,7 +28,10 @@ fi
 
 # User specific environment and startup programs
 
-export TERM="${TERM:=xterm}"
+TERM="${TERM:=xterm}"
+SCREENDIR="${HOME}/.screendir"
+
+export SCREENDIR
 
 [ -e ~/.lesskey ] && lesskey;
 [ -e ~/.dircolors ] && eval "$(dircolors ~/.dircolors)"

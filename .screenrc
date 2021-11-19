@@ -3,6 +3,7 @@ defutf8 on
 encoding UTF-8 UTF-8
 
 startup_message off
+deflogin off
 vbell off
 shell "${SHELL}"
 term "${TERM}"
