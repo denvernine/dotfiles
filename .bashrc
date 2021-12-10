@@ -20,11 +20,11 @@ alias vim='vim -o'
 alias mysql='mysql --pager=less'
 
 function rand() {
-  cat /dev/random | tr -dc 'a-zA-Z0-9' | fold -w $(echo -n ${1:-16}) | head -n 1;                                                                                                                                               
+  cat /dev/urandom | tr -dc ${2:-'[:graph:]'} | fold -w $(echo -n ${1:-16}) | head -n ${3:-1};
 }
 
 COLOR_PROMPT=on  # on/off
-AUTO_ATTACH_SCREEN=on  # on/off
+AUTO_ATTACH_SCREEN=off  # on/off
 USE_SSH_AGENT=off  # on/off
 
 function gitBranch() {
