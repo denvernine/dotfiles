@@ -19,6 +19,9 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+stty stop undef
+stty start undef
+
 alias ll='ls -lhsaFv'
 alias fig='docker compose'
 alias vim='vim -o'
@@ -27,10 +30,6 @@ alias mysql='mysql --pager=less'
 rand() {
   cat /dev/urandom | tr -dc ${2:-'[:graph:]'} | fold -w $(echo -n ${1:-16}) | head -n ${3:-1};
 }
-
-if [ -x /usr/bin/lesskey ] && [ -f ~/.lesskey ]; then
-  lesskey -- ~/.lesskey
-fi
 
 color_prompt=on  # on/off
 
@@ -55,11 +54,3 @@ else
 fi;
 
 unset color_prompt
-
-auto_attach_screen=off  # on/off
-
-if [ "${auto_attach_screen}" = on ]; then
-  [[ -z "${STY}" ]] && screen -RD "${USER}";
-fi;
-
-unset auto_attach_screen
