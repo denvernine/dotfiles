@@ -35,6 +35,8 @@
 [mergetool]
   prompt = false
   keepBackup = false
+[pull]
+  ff = only
 [push]
   default = simple
 [include]
