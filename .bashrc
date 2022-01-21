@@ -54,3 +54,5 @@ else
 fi;
 
 unset color_prompt
+
+source /usr/share/doc/git/contrib/completion/git-completion.bash

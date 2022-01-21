@@ -23,6 +23,8 @@
   force-push = push --force-with-lease
 [color]
   ui = true
+[commit]
+  gpgsign = true
 [diff]
   tool = vimdiff
 [fetch]
@@ -39,5 +41,10 @@
   ff = only
 [push]
   default = simple
-[include]
-  path = ~/.gitconfig.d/user
+[user]
+  useConfigOnly = true
+  signingkey = 40519B0AFF809704
+[includeIf "gitdir:~/projects/"]
+  path = ~/.gitconfig.d/formal_user
+[includeIf "gitdir:~/sandbox/"]
+  path = ~/.gitconfig.d/informal_user

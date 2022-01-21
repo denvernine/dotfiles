@@ -83,7 +83,7 @@ augroup fileTypeIndent
   au BufNewFile,BufRead *.md setlocal filetype=markdown
   au BufNewFile,BufRead *.php setlocal sw=4 sts=4 ts=4
   au BufNewFile,BufRead *.twig,*.vue,*.svelte setlocal filetype=html
-  au BufNewFile,BufRead *.yaml,*.yml setlocal sw=4 sts=4 ts=4
+  au BufNewFile,BufRead *.ts setlocal filetype=javascript
 augroup END
 
 " search

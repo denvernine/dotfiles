@@ -9,7 +9,11 @@ if [ -d "${HOME}/.local/bin" ] ; then
   PATH="${HOME}/.local/bin:${PATH}"
 fi
 
+export PATH
+
 TERM="${TERM:=xterm}"
+export TERM
+
 DOCKER_HOST="unix://${XDG_RUNTIME_DIR}/docker.sock"
 export DOCKER_HOST
 
@@ -17,13 +21,13 @@ HISTCONTROL=ignoreboth
 HISTIGNORE='rm *:sudo rm *'
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-export PATH
-export TERM
 export HISTCONTROL
 export HISTIGNORE
 export HISTSIZE
 export HISTFILESIZE
+
+GNUPGHOME="${HOME}/.gnupg"
+export GNUPGHOME
 
 if [ -x /usr/bin/lesskey ] && [ -f "${HOME}/.lesskey" ]; then
   lesskey -- "${HOME}/.lesskey"
