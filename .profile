@@ -26,8 +26,16 @@ export HISTIGNORE
 export HISTSIZE
 export HISTFILESIZE
 
-GNUPGHOME="${HOME}/.gnupg"
-export GNUPGHOME
+if [ $'\x22'${gnupg_SSH_AUTH_SOCK_by:-0}$'\x22' = $$ ]; then
+  GNUPGHOME="${HOME}/.gnupg"
+  SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+  GPG_TTY=$(tty)
+  export GNUPGHOME
+  export SSH_AUTH_SOCK
+  export GPG_TTY
+
+  echo UPDATESTARTUPTTY | gpg-connect-agent
+fi
 
 if [ -x /usr/bin/lesskey ] && [ -f "${HOME}/.lesskey" ]; then
   lesskey -- "${HOME}/.lesskey"
