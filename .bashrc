@@ -24,6 +24,7 @@ stty start undef
 
 alias ll='ls -lhsaFv'
 alias fig='docker compose'
+alias docker-compose='fig'
 alias vim='vim -o'
 alias mysql='mysql --pager=less'
 
@@ -55,4 +56,23 @@ fi;
 
 unset color_prompt
 
-source /usr/share/doc/git/contrib/completion/git-completion.bash
+GNUPGHOME="${HOME}/.gnupg"
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+GPG_TTY=$(tty)
+export GNUPGHOME
+export SSH_AUTH_SOCK
+export GPG_TTY
+echo UPDATESTARTUPTTY | gpg-connect-agent
+
+if command -v git &> /dev/null \
+  && [[ -e /usr/share/bash-completion/completions/git ]]; then
+  # curl -sSL -- 'https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash' > /usr/share/bash-completion/completions/git
+  . /usr/share/bash-completion/completions/git
+fi
+
+if command -v docker-compose &> /dev/null \
+  || command -v docker compose &> /dev/null \
+  && [[ -e /usr/share/bash-completion/completions/docker ]]; then
+  # curl -sSL -- "https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose" > /usr/share/bash-completion/completions/docker
+  . /usr/share/bash-completion/completions/docker
+fi
