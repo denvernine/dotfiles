@@ -70,8 +70,7 @@ if command -v git &> /dev/null \
   . /usr/share/bash-completion/completions/git
 fi
 
-if command -v docker-compose &> /dev/null \
-  || command -v docker compose &> /dev/null \
+if command -v docker &> /dev/null \
   && [[ -e /usr/share/bash-completion/completions/docker ]]; then
   # curl -sSL -- "https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose" > /usr/share/bash-completion/completions/docker
   . /usr/share/bash-completion/completions/docker
