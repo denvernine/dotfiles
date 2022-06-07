@@ -1,4 +1,4 @@
-# .bashrc
+# Bash Run Control
 #
 # set aliases, prompt setting, settings depending bash, etc.
 
