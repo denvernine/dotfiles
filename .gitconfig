@@ -48,6 +48,6 @@
 [user]
   useConfigOnly = true
 [includeIf "gitdir:~/projects/"]
-  path = ~/.gitconfig.d/user.personal
-[includeIf "gitdir:~/sandbox/"]
   path = ~/.gitconfig.d/user.business
+[includeIf "gitdir:~/sandbox/"]
+  path = ~/.gitconfig.d/user.personal
