@@ -1,8 +1,6 @@
 # .bashrc
 #
-# set aliases
-# set prompt setting
-# set settings depending bash
+# set aliases, prompt setting, settings depending bash, etc.
 
 # If not running interactively, don't do anything
 case $- in
@@ -21,12 +19,6 @@ fi
 # User specific aliases and functions
 stty stop undef
 stty start undef
-
-alias ll='ls -lhsaFv'
-alias fig='docker compose'
-alias docker-compose='fig'
-alias vim='vim -o'
-alias mysql='mysql --pager=less'
 
 rand() {
   cat /dev/urandom | tr -dc ${2:-'[:graph:]'} | fold -w $(echo -n ${1:-16}) | head -n ${3:-1};
@@ -56,22 +48,12 @@ fi;
 
 unset color_prompt
 
-GNUPGHOME="${HOME}/.gnupg"
-SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-GPG_TTY=$(tty)
-export GNUPGHOME
-export SSH_AUTH_SOCK
-export GPG_TTY
-echo UPDATESTARTUPTTY | gpg-connect-agent
-
-if command -v git &> /dev/null \
-  && [[ -e /usr/share/bash-completion/completions/git ]]; then
-  # curl -sSL -- 'https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash' > /usr/share/bash-completion/completions/git
-  . /usr/share/bash-completion/completions/git
+# Source aliases
+if [ -f ${HOME}/.aliases.bash ]; then
+  . ${HOME}/.aliases.bash
 fi
 
-if command -v docker &> /dev/null \
-  && [[ -e /usr/share/bash-completion/completions/docker ]]; then
-  # curl -sSL -- "https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose" > /usr/share/bash-completion/completions/docker
-  . /usr/share/bash-completion/completions/docker
+# Source aliases
+if [ -f ${HOME}/.gpgrc ]; then
+  . ${HOME}/.gpgrc
 fi

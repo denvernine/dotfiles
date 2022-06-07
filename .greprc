@@ -1,0 +1,2 @@
+# grep Run Control
+GREP_OPTIONS="--with-filename --line-number ${GREP_OPTIONS}"

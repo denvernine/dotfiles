@@ -107,7 +107,7 @@ nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 " hit `:source %` and `:PlugInstall` command
 call plug#begin('~/.vim/plugged')
   " which provides support for expanding abbreviations similar to emmet.
-  " e.g.) type `ul>li*2+li>(span>a)+button.small+div#bottom` and `<C-y> + ,`
+  " e.g.) type `ul>li*2+li>(span>a[href=https://example.com]{sample page})+button.small^div#bottom>data[value=1319898155]` and `<C-y> + ,`
   Plug 'mattn/emmet-vim'
   " A simple, easy-to-use Vim alignment plugin.
   Plug 'junegunn/vim-easy-align'

@@ -1,0 +1,9 @@
+# GnuPG Run Control
+
+GNUPGHOME="${HOME}/.gnupg"
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+GPG_TTY=$(tty)
+export GNUPGHOME
+export SSH_AUTH_SOCK
+export GPG_TTY
+echo UPDATESTARTUPTTY | gpg-connect-agent
