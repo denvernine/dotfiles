@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-  *) return;;
+    *i*) ;;
+      *) return;;
 esac
 
 # Source global definitions
@@ -54,6 +54,16 @@ if [ -f ${HOME}/.aliases.bash ]; then
 fi
 
 # Source aliases
-if [ -f ${HOME}/.gpgrc ]; then
+if [[ -z "${STY}" && -f ${HOME}/.gpgrc ]]; then
   . ${HOME}/.gpgrc
+fi
+
+if command -v eksctl &>/dev/null; then
+  . <(eksctl completion bash)
+fi
+if command -v kubectl &>/dev/null; then
+  . <(kubectl completion bash)
+fi
+if command -v helm &>/dev/null; then
+  . <(helm completion bash)
 fi

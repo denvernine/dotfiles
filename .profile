@@ -5,6 +5,10 @@ if [ -d '/sbin' ] ; then
   PATH="${PATH}:/sbin"
 fi
 
+if [ -d '/usr/bin' ]; then
+  PATH="${PATH}:/usr/bin"
+fi
+
 if [ -d "${HOME}/bin" ] ; then
   PATH="${HOME}/bin:${PATH}"
 fi
@@ -31,10 +35,6 @@ if [ -x /usr/bin/lesskey ] && [ -f "${HOME}/.lesskey" ]; then
   lesskey -- "${HOME}/.lesskey"
 fi
 
-if [ -x "${HOME}/.local/bin/anyenv" ]; then
-  eval "$(anyenv init -)"
-fi
-
 auto_attach_screen=off  # on/off
 
 if [ "${auto_attach_screen}" = on ]; then
@@ -54,3 +54,4 @@ if command -v docker &> /dev/null \
   # curl -sSL -- "https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose" > /usr/share/bash-completion/completions/docker
   . /usr/share/bash-completion/completions/docker
 fi
+

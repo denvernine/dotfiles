@@ -5,5 +5,5 @@ l right-scroll
 zz quit
 
 #env
-LESS = -MigSFX~RnW -x4
+LESS = -X -MnRSW~ -x4 -iJg -F
 LESSCHARSET = utf-8

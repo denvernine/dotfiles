@@ -4,16 +4,18 @@
   pager = less
 [alias]
   ls = ls-files
-  stat = status -u --
+  stat = status -sbu
   stashes = stash list
-  branches = branch
+  branches = branch -vv
   unstage = restore --staged
   commend = commit --amend
+  undo = reset --soft HEAD^
   stage-diff = diff --cached
   stash-diff = stash show -p
   files = "!f() { \
     local current_branch=$(git branch --show-current 2>&1); \
-    git diff --name-only master...${current_branch}; \
+    local parent_branch=$(git show-branch | grep '*' | grep -v $(git branch --show-current) | head -1 | awk -F'[]~^[]' '{print $2}'); \
+    git diff --name-only origin/${parent_branch}...${current_branch}; \
   }; f"
   find = grep --heading --break
   slog = log --date=short --pretty=format:'%C(yellow)%h %Cgreen%cd %Cblue%cn %Creset%s'
