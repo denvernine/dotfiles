@@ -1,0 +1,45 @@
+{
+    "dotfiles.repository": "https://github.com/denvernine/dotfiles",
+    "dotfiles.installCommand": "dotfiles_directory=${HOME}/dotfiles ${HOME}/dotfiles/deploy.sh",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoIndent": "full",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.fontSize": 12,
+    "editor.fontWeight": "500",
+    "editor.inlayHints.enabled": "off",
+    "editor.inlineSuggest.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [80, 120],
+    "editor.tabSize": 2,
+    "editor.largeFileOptimizations": false,
+    "editor.unicodeHighlight.includeComments": true,
+    "editor.unicodeHighlight.nonBasicASCII": true,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "window.newWindowDimensions": "inherit",
+    "window.openWithoutArgumentsInNewWindow": "off",
+    "workbench.startupEditor": "none",
+    "update.enableWindowsBackgroundUpdates": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "explorer.compactFolders": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+    "remote.autoForwardPortsSource": "hybrid",
+    "dev.containers.defaultExtensions": [
+        "github.copilot",
+        "ms-azuretools.vscode-docker"
+    ]
+}

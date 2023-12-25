@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "GitHub.github-vscode-theme",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-vscode.remote-repositories",
+        "ms-azuretools.vscode-docker"
+    ]
+}
