@@ -42,26 +42,23 @@ set splitright
 syntax on
 set background=dark
 set cursorline
-colorscheme base16-railscasts
-highlight clear        SignColumn
-highlight ColorColumn  ctermbg=237
-highlight CursorLine   ctermbg=236
-highlight VertSplit    ctermbg=236
-highlight IncSearch    ctermbg=3   ctermfg=1
-highlight LineNr       ctermbg=0   ctermfg=240
-highlight CursorLineNr ctermbg=236 ctermfg=240
-highlight Pmenu        ctermbg=240 ctermfg=12
-highlight PmenuSel     ctermbg=3   ctermfg=1
-highlight Search       ctermbg=1   ctermfg=3
-highlight SpellBad     ctermbg=0   ctermfg=1
-highlight StatusLine   ctermbg=240 ctermfg=12
-highlight StatusLineNC ctermbg=238 ctermfg=0
-highlight Visual       ctermbg=3   ctermfg=0
-highlight over120      ctermbg=1   ctermfg=0
-call matchadd('over120', '.\%>121v')
-if has('nvim-0.9.5')
-  set termguicolors
+set cursorcolumn
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX) && getenv('TERM_PROGRAM') != 'Apple_Terminal')
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
+colorscheme gruvbox
 
 " indentation
 set autoindent
@@ -103,11 +100,13 @@ packadd vim-jetpack
 call jetpack#begin()
   "" bootstrap
   Jetpack 'tani/vim-jetpack', {'opt':1}
-  " which provides support for expanding abbreviations similar to emmet.
-  " e.g.) type `ul>li*2+li>(span>a[href=https://example.com]{sample page})+button.small^div#bottom>data[value=1319898155]` and `<C-y> + ,`
+  "" which provides support for expanding abbreviations similar to emmet.
+  "" e.g.) type `ul>li*2+li>(span>a[href=https://example.com]{sample page})+button.small^div#bottom>data[value=1319898155]` and `<C-y> + ,`
   Jetpack 'mattn/emmet-vim'
   "" A simple, easy-to-use Vim alignment plugin.
   Jetpack 'junegunn/vim-easy-align'
+  "" colorscheme
+  Jetpack 'morhetz/gruvbox'
 call jetpack#end()
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
