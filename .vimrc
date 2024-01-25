@@ -1,53 +1,41 @@
 " Vim Run Control
 " general
 set encoding=utf-8
-if &compatible
+if version <= 740
+  set regexpengine=1
+endif
+if version < 800 && &compatible
   set nocompatible
 endif
-filetype plugin on
-set regexpengine=1
-set ttyfast
-set ambiwidth=double
+if !has('nvim')
+  set ttyfast
+endif
+if !has('nvim-0.5.0')
+  filetype plugin on
+endif
+if !exists('g:vscode')
+  set ambiwidth=double
+endif
 set backspace=indent,eol
 set fixendofline
 set noswapfile
-set nowrap
+set scrolloff=5
 set virtualedit=block
 inoremap <silent> jj <ESC>
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
-command! -nargs=1 -complete=file Rename f %:p:h/<args>|call delete(expand('#'))|w
-command! -nargs=0 -bang MkDir !mkdir -p %:p:h
-augroup setShebang
-  au!
-  au BufNewFile *.php 0put =\"<?php declare(strict_types=1);\n\n\"|$
-augroup END
 
 " appearance
-augroup calcColumnLength
-  au!
-
-  function! s:charCount()
-    let l:result = strchars(getline('.'))
-    return l:result
-  endfunction
-
-  function! s:update()
-    let b:charLength = s:charCount()
-  endfunction
-
-  au BufNewFile,BufRead,CursorMoved,CursorMovedI * call <SID>update()
-augroup END
+set number
+set nowrap
 set laststatus=2
 set list
 set listchars=tab:>_,trail:_,extends:>,precedes:<,nbsp:_
 set matchtime=1
-set scrolloff=5
 set showmatch
 set splitbelow
 set splitright
-set statusline=%f\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ Ln\.%l,\ Col\.%1c\ /\ Ln\.%L,\ Col\.%1{b:charLength}%6P
 
 "" colorscheme
 "" ref: https://vimhelp.org/syntax.txt.html
@@ -71,19 +59,22 @@ highlight StatusLineNC ctermbg=238 ctermfg=0
 highlight Visual       ctermbg=3   ctermfg=0
 highlight over120      ctermbg=1   ctermfg=0
 call matchadd('over120', '.\%>121v')
+if has('nvim-0.9.5')
+  set termguicolors
+endif
 
-" indent
+" indentation
 set autoindent
 set expandtab
 set shiftwidth=2
 set smartindent
 set softtabstop=2
 set tabstop=2
-augroup fileTypeIndent
+augroup file_type_indent
   au!
+  au BufNewFile,BufRead *.json setlocal filetype=javascript sw=4 sts=4 ts=4
   au BufNewFile,BufRead *.md setlocal filetype=markdown
   au BufNewFile,BufRead *.php setlocal sw=4 sts=4 ts=4
-  au BufNewFile,BufRead *.twig,*.vue,*.svelte setlocal filetype=html
   au BufNewFile,BufRead *.ts setlocal filetype=javascript
 augroup END
 
@@ -96,23 +87,27 @@ nnoremap # #zz
 nnoremap * *zz
 nnoremap g# g#zz
 nnoremap g* g*zz
-nnoremap N Nzz
 nnoremap n nzz
+nnoremap N Nzz
 vnoremap z/ <ESC>/\%V
 vnoremap z? <ESC>?\%V
 nnoremap <silent> <ESC><ESC> :nohlsearch<CR>
 
 " plugin
-"
-" setting for 'junegunn/vim-plug'
-" hit `:source %` and `:PlugInstall` command
-call plug#begin('~/.vim/plugged')
+let s:jetpackfile = stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+let s:jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+if !filereadable(s:jetpackfile)
+  call system(printf('curl -fsSL -o %s --create-dirs -- %s', s:jetpackfile, s:jetpackurl))
+endif
+packadd vim-jetpack
+call jetpack#begin()
+  "" bootstrap
+  Jetpack 'tani/vim-jetpack', {'opt':1}
   " which provides support for expanding abbreviations similar to emmet.
   " e.g.) type `ul>li*2+li>(span>a[href=https://example.com]{sample page})+button.small^div#bottom>data[value=1319898155]` and `<C-y> + ,`
-  Plug 'mattn/emmet-vim'
-  " A simple, easy-to-use Vim alignment plugin.
-  Plug 'junegunn/vim-easy-align'
-call plug#end()
-let g:indentLine_color_term = 239
+  Jetpack 'mattn/emmet-vim'
+  "" A simple, easy-to-use Vim alignment plugin.
+  Jetpack 'junegunn/vim-easy-align'
+call jetpack#end()
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
